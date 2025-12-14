@@ -1,16 +1,43 @@
-# todolist_app
+# Flutter To-Do List App
 
-A new Flutter project.
+A simple Flutter to-do list application that demonstrates state management using `setState` and local data persistence using `SharedPreferences`.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## Features
+- Add tasks
+- Display tasks using ListView
+- Save tasks locally
+- Tasks persist after app restart
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Tools & Technologies
+- Flutter
+- Dart
+- SharedPreferences
+- Android Studio / VS Code
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## Setup Instructions
+
+1. Install Flutter from official website.
+2. Extract the Flutter folder to your desired location.
+3. Add `flutter/bin` to your system PATH.
+4. Verify installation by running:
+   ```bash
+   flutter doctor
+   ```
+5. Intsall an IDE+ Dart and Flutter plugins in it.
+6. Clone the project repo.
+7. Navigate to project folder.
+8. Get dependencies.
+9. Add the following dependency in pubspec.yaml:
+      ```bash
+    shared_preferences: ^latestVersion
+      ```
+11. Run application by:
+    ```bash
+    flutter run
+    ```
