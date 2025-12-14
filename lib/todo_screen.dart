@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TodoScreen extends StatefulWidget {
   const TodoScreen({super.key});
@@ -10,6 +11,34 @@ class TodoScreen extends StatefulWidget {
 class _TodoScreenState extends State<TodoScreen> {
   List<String> tasks = [];
   TextEditingController taskController = TextEditingController();
+
+  void loadSavedTasks() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      tasks = prefs.getStringList('tasks') ?? [];
+    });
+  }
+
+  void saveTasks() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setStringList('tasks', tasks);
+  }
+
+  void addTasks() {
+    if (taskController.text.isNotEmpty) {
+      setState(() {
+        tasks.add(taskController.text);
+        taskController.clear();
+      });
+      saveTasks();
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loadSavedTasks();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +70,7 @@ class _TodoScreenState extends State<TodoScreen> {
                     ),
                   ),
                 ),
-                IconButton(onPressed: () {}, icon: Icon(Icons.add)),
+                IconButton(onPressed: addTasks, icon: Icon(Icons.add)),
               ],
             ),
             Expanded(
